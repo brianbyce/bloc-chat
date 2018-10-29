@@ -5,8 +5,7 @@ class RoomList extends Component {
 		super(props);
 		this.state = {
 			rooms: [],
-			newRoom: '',
-
+			newRoom: ''
 		};
 		this.roomsRef = this.props.firebase.database().ref('rooms');
 	
@@ -26,13 +25,11 @@ class RoomList extends Component {
 		this.setState({newRoom: e.target.value});
 	}
 
-	handleSubmit() { 
+	handleSubmitRoom() { 
 		if(this.state.newRoom !== '') {
-			this.roomsRef.push({
-				name: this.state.newRoom
-			});
+			this.roomsRef.push({ name: this.state.newRoom });
+			this.setState({newRoom: ''});
 		}
-
 	}
 
 	render() {
@@ -42,12 +39,12 @@ class RoomList extends Component {
 				{
 					this.state.rooms.map((room, index) =>
 						<li key={index}>
-							<h1>{room.name}</h1>
+							<button onClick={(e) => this.props.chatRoom(room)}>{room.name}</button>
 						</li>
 					)
 				}
 				</ul>
-				<form onSubmit={ (e) => this.handleSubmit(e)}>
+				<form onSubmit={ (e) => this.handleSubmitRoom()}>
 					<label>
 						Would you like to add a new chatroom?
 						<input type="text" value={this.state.newRoom} onChange={ (e) => this.handleChange(e)}/>

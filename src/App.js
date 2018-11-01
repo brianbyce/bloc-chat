@@ -5,7 +5,7 @@ import MessageList from './components/MessageList.js';
 import User from './components/User.js';
 import './App.css';
       // Initialize Firebase
-var config = {
+const config = {
  apiKey: "AIzaSyAqYa8XE2K3E9JQehwCJuDxbdTrt-QWubc",
   authDomain: "bloc-chat-react-byce-cc325.firebaseapp.com",
   databaseURL: "https://bloc-chat-react-byce-cc325.firebaseio.com",
@@ -15,6 +15,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -22,6 +23,8 @@ class App extends Component {
       chatRoom: [],
       currentUser: null
     };
+    this.userId = this.userId.bind(this);
+    this.chatRoom = this.chatRoom.bind(this);
   }
 
   chatRoom(room) {
@@ -40,6 +43,7 @@ class App extends Component {
           <h1> {this.state.chatRoom.name || 'Please select a chat room to enter!'}</h1>
           <User
             firebase = { firebase }
+            currentUser = { (e) => this.state.currentUser(e) }
           />
         </header>
         <RoomList 

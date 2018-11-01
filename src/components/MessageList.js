@@ -32,6 +32,7 @@ class MessageList extends Component {
 	}
 
 	handleSubmitMessage(e) { 
+		e.preventDefault();
 		if(this.state.content !== '') {
 			this.messageRef.push({ 
 				content: this.state.content,

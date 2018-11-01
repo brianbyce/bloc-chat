@@ -4,6 +4,8 @@ class User extends Component {
 	constructor(props) {
 		super(props);
 		this.state={currentUser:null};
+		this.signIn = this.signIn.bind(this);
+		this.signOn = this.signOut.bind(this);
 	}
 
 	componentDidMount() {
@@ -12,7 +14,8 @@ class User extends Component {
 		});
 	}
 
-	signIn() {
+	signIn(e) {
+		e.preventDefault();
   		const provider = new this.props.firebase.auth.GoogleAuthProvider();
   		this.props.firebase.auth().signInWithPopup(provider).then((result) => {
     		const user = result.user;
@@ -20,7 +23,8 @@ class User extends Component {
   		});
 	}
 
-	signOut() {
+	signOut(e) {
+		e.preventDefault();
 		this.props.firebase.auth().signOut().then(() => {
 			this.props.currentUser(null);
 		});

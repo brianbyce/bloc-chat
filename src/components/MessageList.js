@@ -27,7 +27,7 @@ class MessageList extends Component {
 				content: e.target.value,
 				sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
 				roomId: this.props.chatRoom,
-				username: "user"
+				username: this.props.currentUser
 			});
 	}
 

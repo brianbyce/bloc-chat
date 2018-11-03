@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   userId(user) {
-    this.setState({ currentUser: user });
+    this.setState({ currentUser: user === null ? "Guest" : this.state.user.displayName });
   }
     
   
@@ -42,8 +42,9 @@ class App extends Component {
         <header className="App-header">
           <h1> {this.state.chatRoom.name || 'Please select a chat room to enter!'}</h1>
           <User
-            firebase = { firebase }
-            currentUser = { (e) => this.state.currentUser(e) }
+            firebase = {firebase}
+            userId = {this.userId}
+            currentUser = {this.state.currentUser}
           />
         </header>
         <RoomList 
@@ -53,6 +54,7 @@ class App extends Component {
         <MessageList
           firebase = { firebase }
           roomId = { this.state.chatRoom.key }
+          currentUser = { this.state.currentUser }
         />
       </div>
     );

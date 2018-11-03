@@ -30,7 +30,7 @@ class RoomList extends Component {
 		if(this.state.newRoom !== '') {
 			this.roomsRef.push({ name: this.state.newRoom });
 			this.setState({newRoom: ''});
-		}
+		};
 	}
 
 	render() {

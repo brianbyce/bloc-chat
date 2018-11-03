@@ -26,11 +26,10 @@ class RoomList extends Component {
 	}
 
 	handleSubmitRoom(e) { 
-		e.preventDefault();
 		if(this.state.newRoom !== '') {
 			this.roomsRef.push({ name: this.state.newRoom });
 			this.setState({newRoom: ''});
-		};
+		}
 	}
 
 	render() {

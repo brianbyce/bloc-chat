@@ -6,7 +6,6 @@ class MessageList extends Component {
 		this.state = {
 			messages: [],
 			content:'',
-			username:'',
 			sentAt:''
 		};
 		this.messageRef = this.props.firebase.database().ref('messages');
@@ -32,12 +31,12 @@ class MessageList extends Component {
 	}
 
 	handleSubmitMessage(e) { 
-		e.preventDefault();
+		
 		if(this.state.content !== '') {
 			this.messageRef.push({ 
 				content: this.state.content,
 				sentAt: this.state.sentAt,
-				username: this.state.username,
+				username: this.props.currentUser,
 				roomId: this.props.roomId
 			});
 			this.setState({content: '', username:'', sentAt:'', roomId:''});

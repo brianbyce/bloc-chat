@@ -5,7 +5,7 @@ import MessageList from './components/MessageList.js';
 import User from './components/User.js';
 import './App.css';
       // Initialize Firebase
-const config = {
+var config = {
  apiKey: "AIzaSyAqYa8XE2K3E9JQehwCJuDxbdTrt-QWubc",
   authDomain: "bloc-chat-react-byce-cc325.firebaseapp.com",
   databaseURL: "https://bloc-chat-react-byce-cc325.firebaseio.com",
@@ -32,9 +32,9 @@ class App extends Component {
   }
 
   userId(user) {
-    this.setState({ currentUser: user === null ? "Guest" : this.state.user.displayName });
+    var currentUser = user === null ? "Guest" : user.displayName;
+    this.setState({ currentUser: currentUser });
   }
-    
   
   render() {
     return (

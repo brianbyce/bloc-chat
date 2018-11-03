@@ -31,7 +31,7 @@ class MessageList extends Component {
 	}
 
 	handleSubmitMessage(e) { 
-		
+		e.preventDefault();
 		if(this.state.content !== '') {
 			this.messageRef.push({ 
 				content: this.state.content,
@@ -55,7 +55,7 @@ class MessageList extends Component {
 				{
 					this.state.messages.map((message, index) => {
 							 if( this.props.roomId === message.roomId) {
-								return <li key={index}><h1>{message.content}</h1></li>
+								return <li key={index}><h3>{message.username}</h3><p>{message.content}</p></li>
 							}
 								return null;
 							}
